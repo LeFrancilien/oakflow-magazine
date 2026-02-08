@@ -1,9 +1,19 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
 import { VIDEOS } from "@/lib/data";
 import { BentoGrid } from "@/components/bento-grid";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  // In a real app we might fetch this data, but here it's static
-  const videos = VIDEOS;
+  const [activeTab, setActiveTab] = useState("À la Une");
+
+  const filteredVideos = activeTab === "À la Une"
+    ? VIDEOS
+    : VIDEOS.filter(video => video.category === activeTab);
+
+  const tabs = ["À la Une", "Infrastructure", "Agents", "Vibecoding"];
 
   return (
     <main className="min-h-screen bg-[#F5F5F7] text-gray-900 pb-20">
@@ -11,21 +21,39 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-gray-200/50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">O</span>
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="OakflowAI Logo"
+                fill
+                className="object-cover"
+              />
             </div>
             <h1 className="text-xl font-bold tracking-tight">OakflowAI<span className="text-gray-400 font-normal">.magazine</span></h1>
           </div>
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-500">
-            <a href="#" className="text-black transition-colors">À la Une</a>
-            <a href="#" className="hover:text-black transition-colors">Infrastructure</a>
-            <a href="#" className="hover:text-black transition-colors">Agents</a>
-            <a href="#" className="hover:text-black transition-colors">Vibecoding</a>
+          <nav className="hidden md:flex items-center space-x-1 bg-gray-200/50 p-1 rounded-full">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${activeTab === tab
+                    ? "bg-white text-black shadow-sm"
+                    : "text-gray-500 hover:text-black"
+                  }`}
+              >
+                {tab}
+              </button>
+            ))}
           </nav>
-          <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-bold transition-colors flex items-center gap-2 shadow-sm">
+          <a
+            href="https://www.youtube.com/@OakflowAI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-bold transition-colors flex items-center gap-2 shadow-sm"
+          >
             S'abonner
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
-          </button>
+          </a>
         </div>
       </header>
 
@@ -40,7 +68,14 @@ export default function Home() {
       </div>
 
       {/* Main Grid */}
-      <BentoGrid videos={videos} />
+      <motion.div
+        key={activeTab}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <BentoGrid videos={filteredVideos} />
+      </motion.div>
 
       {/* Footer */}
       <footer className="container mx-auto px-4 py-12 text-center text-sm text-gray-400 border-t border-gray-200 mt-20">
