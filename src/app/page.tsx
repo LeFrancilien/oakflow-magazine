@@ -1,65 +1,51 @@
-import Image from "next/image";
+import { VIDEOS } from "@/lib/data";
+import { BentoGrid } from "@/components/bento-grid";
 
 export default function Home() {
+  // In a real app we might fetch this data, but here it's static
+  const videos = VIDEOS;
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#F5F5F7] text-gray-900 pb-20">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-gray-200/50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">O</span>
+            </div>
+            <h1 className="text-xl font-bold tracking-tight">OakflowAI<span className="text-gray-400 font-normal">.magazine</span></h1>
+          </div>
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-500">
+            <a href="#" className="text-black transition-colors">À la Une</a>
+            <a href="#" className="hover:text-black transition-colors">Infrastructure</a>
+            <a href="#" className="hover:text-black transition-colors">Agents</a>
+            <a href="#" className="hover:text-black transition-colors">Vibecoding</a>
+          </nav>
+          <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-bold transition-colors flex items-center gap-2 shadow-sm">
+            S'abonner
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      {/* Hero Section / Date */}
+      <div className="container mx-auto px-4 py-12 md:py-16">
+        <div className="flex flex-col space-y-2 text-center items-center">
+          <span className="text-sm font-medium text-gray-400 uppercase tracking-widest border border-gray-200 px-3 py-1 rounded-full bg-white">Édition Hebdomadaire</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900 leading-tight">
+            L'essentiel de l'IA,<br className="hidden md:block" /> sélectionné par <span className="text-gray-500 italic font-serif">OakflowAI</span>
+          </h2>
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* Main Grid */}
+      <BentoGrid videos={videos} />
+
+      {/* Footer */}
+      <footer className="container mx-auto px-4 py-12 text-center text-sm text-gray-400 border-t border-gray-200 mt-20">
+        <p>© 2026 Antigravity Magazine. Curation par IA & Humains.</p>
+      </footer>
+    </main>
   );
 }
