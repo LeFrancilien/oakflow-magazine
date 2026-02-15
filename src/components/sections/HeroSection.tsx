@@ -50,7 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ featuredVideo, onSubsc
 
                     {/* Animated Description */}
                     <p
-                        className={`text-xl text-gray-200 mb-8 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                        className={`text-xl text-white font-medium mb-8 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                             }`}
                     >
                         {featuredVideo.description}
@@ -68,11 +68,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ featuredVideo, onSubsc
                                 className="w-12 h-12 rounded-full border-2 border-white"
                             />
                             <div>
-                                <p className="text-white font-semibold">{featuredVideo.author.name}</p>
-                                <p className="text-gray-300 text-sm">{featuredVideo.views} views</p>
+                                <p className="text-white font-bold">{featuredVideo.author.name}</p>
+                                <p className="text-white text-sm font-medium">{featuredVideo.views} vues</p>
                             </div>
                         </div>
-                        <div className="text-gray-300">
+                        <div className="text-white font-semibold">
                             <span className="text-sm">{featuredVideo.duration}</span>
                         </div>
                     </div>
@@ -83,11 +83,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ featuredVideo, onSubsc
                             }`}
                     >
                         <Button variant="primary" size="lg">
-                            Watch Now
+                            Regarder Maintenant
                         </Button>
-                        <Button variant="outline" size="lg" onClick={onSubscribeClick}>
-                            Subscribe for More
-                        </Button>
+                        <button
+                            onClick={onSubscribeClick}
+                            className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-lg rounded-lg transition-all shadow-lg hover:shadow-xl"
+                        >
+                            S'ABONNER
+                        </button>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { categories } from '../../data/videos';
 import type { Category } from '../../types';
-import { Button } from '../ui';
 
 interface HeaderProps {
     selectedCategory: Category;
@@ -35,10 +34,13 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <h1 className="text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-                            <span className="text-[--color-primary]">Oak</span>
-                            <span className="text-[--color-dark]">flow</span>
-                        </h1>
+                        <div>
+                            <h1 className="text-3xl font-bold leading-none" style={{ fontFamily: 'var(--font-display)' }}>
+                                <span className="text-[--color-primary]">Oak</span>
+                                <span className="text-[--color-dark]">flow</span>
+                            </h1>
+                            <p className="text-xs font-semibold text-gray-600 tracking-wider uppercase">Magazine</p>
+                        </div>
                     </div>
 
                     {/* Category Navigation */}
@@ -63,13 +65,12 @@ export const Header: React.FC<HeaderProps> = ({
 
                     {/* Subscribe Button */}
                     <div className="flex-shrink-0">
-                        <Button
+                        <button
                             onClick={onSubscribeClick}
-                            variant="primary"
-                            size="sm"
+                            className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full transition-all shadow-md hover:shadow-lg"
                         >
-                            Subscribe
-                        </Button>
+                            SUBSCRIBE
+                        </button>
                     </div>
                 </div>
 
