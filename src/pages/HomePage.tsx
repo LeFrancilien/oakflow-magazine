@@ -18,12 +18,6 @@ export const HomePage: React.FC = () => {
         return videos.filter(video => video.category === selectedCategory);
     }, [selectedCategory]);
 
-    // Get featured video for hero section
-    const featuredVideo = useMemo(() => {
-        const featured = videos.find(video => video.featured);
-        return featured || videos[0];
-    }, []);
-
     // Handle video click
     const handleVideoClick = (video: Video) => {
         setSelectedVideo(video);
@@ -40,10 +34,7 @@ export const HomePage: React.FC = () => {
             />
 
             {/* Hero Section */}
-            <HeroSection
-                featuredVideo={featuredVideo}
-                onSubscribeClick={() => setIsModalOpen(true)}
-            />
+            <HeroSection />
 
             {/* Video Grid */}
             <BentoGrid
