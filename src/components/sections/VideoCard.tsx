@@ -25,7 +25,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onClick }) => {
                     {/* Featured Badge */}
                     {video.featured && (
                         <div className="absolute top-2 left-2">
-                            <Badge variant="accent">Featured</Badge>
+                            <Badge variant="accent">À la Une</Badge>
                         </div>
                     )}
                 </div>
@@ -60,7 +60,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ video, onClick }) => {
                             </span>
                         </div>
                         <span className="text-xs text-gray-500">
-                            {video.views} views
+                            {video.views} vues
                         </span>
                     </div>
                 </div>

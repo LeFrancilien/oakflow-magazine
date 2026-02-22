@@ -17,7 +17,7 @@ export interface Video {
     keyPoints?: string[];
 }
 
-export type Category = 'Technology' | 'Lifestyle' | 'Culture' | 'Business' | 'Design' | 'All';
+export type Category = 'Business & Infra IA' | 'Développement' | 'Automatisation' | 'All';
 
 export interface SubscriptionFormData {
     email: string;

@@ -73,23 +73,23 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ isOpen, on
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
-                        <h3 className="text-2xl font-bold text-[--color-dark] mb-2">Welcome Aboard!</h3>
-                        <p className="text-gray-600">You've successfully subscribed to Oakflow Magazine.</p>
+                        <h3 className="text-2xl font-bold text-[--color-dark] mb-2">Bienvenue !</h3>
+                        <p className="text-gray-600">Vous êtes maintenant abonné à Oakflow Magazine.</p>
                     </div>
                 ) : (
                     /* Form State */
                     <>
                         <h2 className="text-3xl font-bold text-[--color-dark] mb-2" style={{ fontFamily: 'var(--font-display)' }}>
-                            Subscribe to Oakflow
+                            S'abonner à Oakflow
                         </h2>
                         <p className="text-gray-600 mb-6">
-                            Get the latest curated content delivered to your inbox.
+                            Recevez les derniers contenus sélectionnés dans votre boîte mail.
                         </p>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Name
+                                    Nom
                                 </label>
                                 <input
                                     type="text"
@@ -97,7 +97,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ isOpen, on
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--color-primary] focus:border-transparent outline-none transition-all"
-                                    placeholder="Your name"
+                                    placeholder="Votre nom"
                                 />
                             </div>
 
@@ -123,13 +123,13 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ isOpen, on
                                 className="w-full"
                                 disabled={isSubmitting}
                             >
-                                {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
+                                {isSubmitting ? 'Abonnement en cours...' : 'S\'abonner'}
                             </Button>
                         </form>
 
                         <p className="text-xs text-gray-500 mt-4 text-center">
-                            By subscribing, you agree to receive emails from Oakflow Magazine.
-                            You can unsubscribe at any time.
+                            En vous abonnant, vous acceptez de recevoir des emails d'Oakflow Magazine.
+                            Vous pouvez vous désabonner à tout moment.
                         </p>
                     </>
                 )}
